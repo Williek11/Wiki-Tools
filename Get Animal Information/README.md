@@ -1,0 +1,1 @@
+This is a small script dedicated to trancribing animal information to a Lua table. You can interact with it via JS, but the easiest way to use it is to click the taming counter of any animal and it will be on your clipboard. Will hopefully add some GUI to it soon.
