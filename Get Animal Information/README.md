@@ -1,1 +1,3 @@
-This is a small script dedicated to trancribing animal information to a Lua table. You can interact with it via JS, but the easiest way to use it is to click the taming counter of any animal and it will be on your clipboard. You still have to add some information, but this will help make the proccess less painful. Will hopefully add some GUI to it soon. You have to copy the script (.js) to the console for it to work. You can check the code on the .ts file.
+This is a small script dedicated to trancribing animal information to a Lua table. To use it, paste it on your console. You can interact with it via JS, but the easiest way to use it is to enter the animal's Tamodex and click the copy button, next to the pet cards button.
+
+![Screenshot 2022-06-24 at 23-25-08 Taming io - The online multiplayer survival game with pets!](https://user-images.githubusercontent.com/69314891/175754728-30a66b0c-ebbc-4163-bb61-71ae80ebbb29.png)
