@@ -1,4 +1,4 @@
-const wiki = (function(){
+const wiki_1 = (function(){
     type looseObject = {
         [key: string]: any,
     };
@@ -61,7 +61,7 @@ const wiki = (function(){
         return element as HTMLDivElement
     }
 
-    // returns parentElement.getElementById(id),
+    // returns window.getElementById(id),
     // but the caveat is that it caches the result, and that makes
     // for a big performance boost
     const getId = (function(){
@@ -162,26 +162,18 @@ const wiki = (function(){
             }
             customConsole.error("Wiki - primitiveString: Primitive " + primitive + " was attempted to be turned into a string, but it is of type "+type)
         },
-        // turns jabascript objects into lua objects
+        // turns javascript objects into lua objects
         transformIntoLuaObject (obj: looseObject) {
             const keys = Object.keys(obj);
 
             // create luaCode variable, where we'll store the Lua code
             let luaCode = [];
 
-            // if it is an array
-            if (Object.prototype.toString.call(obj) === '[object Array]') {
-                // avoid being tabbed
-                const luaArrayCode = [];
-
+            if (Array.isArray(obj)) {
                 for (var i = 0, l = keys.length; i < l; i++) {
-                    luaArrayCode.push(Lua.primitiveString(obj[keys[i]]))
+                    luaCode.push(`${Lua.primitiveString(obj[keys[i]])},`)
                 }
-
-                luaCode.push(luaArrayCode.join(", "));
-            }
-            // if it is an object
-            else {
+            } else {
                 // loops through every argument and adds it to luaCode
                 for (var i = 0, l = keys.length; i < l; i++) {
                     luaCode.push(`['${keys[i]}'] = ${Lua.primitiveString(obj[keys[i]])},`)
@@ -192,9 +184,9 @@ const wiki = (function(){
             return "{\n" + Lua.addTab(luaCode.join("\n")) + "\n}";
         },
         // adds tabs to the code
-        addTab: function (str: string, amount = 1) {
+        addTab: function (str: string, amount = 1): string {
             // matches all of the starts of line
-            return str.replace(/^/gm, (function (){
+            return str.replace(/^/gm, (function () {
                 let str = '';
 
                 for (var i = 0; i < amount; i++) { str = str + '\t'; }
